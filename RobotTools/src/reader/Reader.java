@@ -3,7 +3,9 @@ package reader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
+import logic.ExternalAxis;
 import main.Statics;
 import team.Player;
 import team.Team;
@@ -31,6 +33,12 @@ public class Reader {
 			int number = 0;
 			while ((sCurrentLine = br.readLine()) != null) {
 				String[] line = sCurrentLine.split("\\s+");
+				
+			    List<Double> list = new ArrayList<Double>();
+			    list.add(line[0]);
+				
+				ExternalAxis ea = new ExternalAxis(list);
+				
 				int[] eurIndexes = getEURindexes(line);
 				if(Statics.entered){
 					if (counter == 1) {
